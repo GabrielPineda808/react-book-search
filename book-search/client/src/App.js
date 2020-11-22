@@ -1,13 +1,21 @@
 import React, { Component } from "react";
 import "./App.css";
-import Navbar from './components/Navbar/Navbar.js';
-import Header from './components/Header/Header.js';
+import Searchpage from "./pages/search";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import Saved from "./pages/saved";
+
+
 
 function App() {
   return (
-    <div className="App">
-      <Navbar />
-    </div>
+    <Router>
+      <div className="App">
+        <Switch>
+          <Route exact path='/' component={Searchpage} />
+          <Route exact path='/saved' component={Saved} />
+        </Switch>
+      </div>
+    </Router>
   );
 }
 
