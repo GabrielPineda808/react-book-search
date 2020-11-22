@@ -2,9 +2,6 @@ import React from 'react';
 import API from '../../utils/API'
 
 function List (props) {
-
-    const bookie = API.getBooks('coraline').then(res => console.log(res.data.items ))
-    // console.log(bookie)
     const styles ={
         marginLeft:{
             marginRight: 1000
@@ -21,7 +18,7 @@ function List (props) {
                                     <div className="col-lg-4">
                                         <h4>{props.title}</h4>
                                         
-                                        <h6>Written by :{props.author}</h6>
+                                        <h6>Written by: {props.author}</h6>
                                     </div>
                                     <div className="col-lg-4"></div>
                                     <div className="col-lg-4">
