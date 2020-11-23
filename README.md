@@ -22,6 +22,7 @@ This is a React based application which utilizes the Google Books API and MongoD
 
 ## Installation
 * [Deployed Link](https://nathanmvu.github.io/react-book-search/)
+
 To run the program, install it from the repository and then navigate to the server.js file in the src folder. In an integrated terminal run
 `npm start`
 and the program will launch in a web browser.
