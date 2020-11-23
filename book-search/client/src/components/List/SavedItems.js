@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import API from '../../utils/API'
 
 function List(props) {
+  
     const styles ={
       marginLeft:{
         marginRight: 1000
@@ -18,7 +19,10 @@ function List(props) {
       console.log('delete btn');
       console.log(id);
       API.deleteBook(id)
-        .then(res => loadBooks())
+        .then(res => {
+          loadBooks()
+          window.location.reload(false);
+        })
         .catch(err => console.log(err))
     }
 

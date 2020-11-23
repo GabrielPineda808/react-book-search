@@ -14,8 +14,8 @@ class Saved extends Component {
   };
 
   componentDidMount() {
-    this.loadBooks()
-    console.log('books', this.state.books)
+    console.log('mounted');
+    this.loadBooks();
   };
 
   loadBooks() {
