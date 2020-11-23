@@ -2,13 +2,6 @@ import React, { Component } from 'react';
 import API from '../../utils/API'
 
 function List(props) {
-  
-    const styles ={
-      marginLeft:{
-        marginRight: 1000
-      }
-    }
-
     const loadBooks = () => {
       API.getAllBooks()
         .then(res => console.log(res.data))
@@ -30,7 +23,7 @@ function List(props) {
       <div >
         <div class="card" >
           <div class="card-body">
-            <h5 class="card-title" style={styles.marginLeft}>Saved Books</h5>
+            <h5 class="card-title">Saved Book</h5>
             <ul className="list-group"> 
               <li className="list-group-item">
                 <div className="row">

@@ -1,36 +1,80 @@
 # React Google Book Search
-In this project i was able to create book searching website using the google books api. On the search page the user is able to easily search a book and then be met with multiple diffrent books with similar titles along with the authors, a small description of the book, an image of the cover, and a view link to the google site. The call for the books was made using axios which took the users search input by setting the state to whatever value the user typed in. The user also has the ability to sae a book which they can access any time in their saved books page.
+Google Book Search application where users can search, view, and save books they are interested in.
 
-## Gif of the Book Search
-![Home](booksearch.gif)
+## Description
+This is a React based application which utilizes the Google Books API and MongoDB in order to search for and save books to the server database. To use the application, simply enter a book title and then the application will bring up search results for relevant books and the information of the books. Clicking the view button will open a new tab linking to the Google Books page for the book and then the save button will save the book information to the database which can be accessed via the "Saved" page.
 
-## Code Snippet
-The code below is actually how after receiving the input in the search bar from the user it gets sent to a function which calls upon the api to bring back and object of data which contains the book info then  it is mapped into the list items component which will create a <li></li> for each book that the object contains.
+## Table of Contents
+* [Getting Started](#getting-started)
+* [Installation](#installation)
+* [Usage](#usage)
+* [Technologies](#technologies)
+* [Author](#author)
+* [Acknowledgments](#acknowledgments)
+* [License](#license)
 
+## Getting Started
+* [Github Repository](https://github.com/nathanmvu/react-book-search)
+* [Deployed Link](https://nathanmvu.github.io/react-book-search/)
+* [Usage Demo Video](https://drive.google.com/file/d/1JAu-LMIW0I-uX_CaP7ygxB4uHDlosKgV/view)
+
+![Demo](./img/demo.gif)
+
+## Installation
+* [Deployed Link](https://nathanmvu.github.io/react-book-search/)
+To run the program, install it from the repository and then navigate to the server.js file in the src folder. In an integrated terminal run
+`npm start`
+and the program will launch in a web browser.
+
+## Usage
+Search Results:
+![](./img/searchResults.png)
+
+Saved Books:
+![](./img/savedBooks.png)
+
+### Code Snippet
+The code below shows how search inputs are handled and rendered onto the Search page. It includes a workaround to handling the issue of API response data having an undefined imageLink attribute. In it's current state, the application will always try to render 10 entries for results onto the page and so no attributes for book results can be left undefined.
+```
 <div className="container">
     <h3>Search a Book</h3>
     <input type="text" value={this.state.value} onChange={this.handleChange} className="form-control" placeholder="Search..." aria-label="Recipient's username" aria-describedby="button-addon2"></input>
     <button className="btn btn-outline-secondary mt-3 mb-3" onClick={this.handleSubmit} type="button" id="button-addon2">Search</button>
-    {this.state.books.map(items => 
-        <Items title={items.volumeInfo.title} author={items.volumeInfo.authors} description={items.volumeInfo.description} link={items.volumeInfo.infoLink} image={items.volumeInfo.imageLinks.smallThumbnail} />  
-                )}           
+    {this.state.books.map(book => 
+        <Items 
+            title={book.volumeInfo.title} 
+            author={book.volumeInfo.authors} 
+            description={book.volumeInfo.description} 
+            link={book.volumeInfo.infoLink} 
+            image={
+                book.volumeInfo.imageLinks === undefined
+                    ? ""
+                    : `${book.volumeInfo.imageLinks.thumbnail}`
+            }
+        />  
+        )}           
 </div>
+```
 
-## Built With
+## Technologies
 
 * [React](https://www.react.com/)
-* [Javascript](https://www.javascript.com/)
+* [MongoDB](https://www.mongodb.com/)
 * [Node.js](https://nodejs.org/en/)
 * [NPM](https://www.npmjs.com/)
 * [Axios](https://www.npmjs.com/package/axios/)
 
-
-## Github Repository
-- [Repo](https://github.com/GabrielPineda808/react-book-search)
-
 ## Authors
+**Gabriel Pineda** 
+- [Github](https://github.com/GabrielPineda808)
+- [LinkedIn](https://www.linkedin.com/in/gabriel-pineda-a94535195/)
 
-* **Gabriel Pineda** 
+**Nathan Vu**
+- [Github](https://github.com/nathanmvu)
+- [Email](mailto:nathanvu99@gmail.com)
 
-- [Link to Github](https://github.com/GabrielPineda808)
-- [Link to LinkedIn](https://www.linkedin.com/in/gabriel-pineda-a94535195/)
+## Acknowledgments
+* Project parameters provided by the UCB Extension Coding Bootcamp
+
+## License
+[![MIT License](https://img.shields.io/apm/l/atomic-design-ui.svg?)](https://github.com/tterb/atomic-design-ui/blob/master/LICENSEs)

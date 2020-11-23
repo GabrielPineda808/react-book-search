@@ -26,7 +26,7 @@ function List (props) {
 
     return (
         <div >
-            <div class="card" >
+            <div class="card">
                 <div class="card-body">
                     <h5 class="card-title" style={styles.marginLeft}>Books</h5>
                     <ul className="list-group"> 
