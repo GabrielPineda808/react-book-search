@@ -1,12 +1,14 @@
 import React from 'react';
-import Jumbo from '../components/Jumbotron';
+import Jumbotron from '../components/Jumbotron';
 import Navbar from '../components/Navbar/Navbar';
+import SavedBooks from "../components/saved"
 
 function Saved () {
   return (
     <div>
         <Navbar />
-        <Jumbo />
+        <Jumbotron />
+        <SavedBooks />
     </div>
   )
 }

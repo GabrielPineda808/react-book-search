@@ -4,9 +4,9 @@ import Searchpage from "./pages/search";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Saved from "./pages/saved";
 
-
-
 function App() {
+  console.log('works');
+
   return (
     <Router>
       <div className="App">
