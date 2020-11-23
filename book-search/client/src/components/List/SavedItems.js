@@ -7,11 +7,18 @@ function List(props) {
         marginRight: 1000
       }
     }
+
+    const loadBooks = () => {
+      API.getAllBooks()
+        .then(res => console.log(res.data))
+        .catch(err => console.log(err))
+    }
   
-    const deleteHandle = (id) => {
+    const deleteBook = (id) => {
       console.log('delete btn');
+      console.log(id);
       API.deleteBook(id)
-        .then(res => this.loadBooks())
+        .then(res => loadBooks())
         .catch(err => console.log(err))
     }
 
@@ -30,7 +37,7 @@ function List(props) {
                   </div>
                   <div className="col-lg-4"></div>
                   <div className="col-lg-4">
-                    <button type='button' className="btn mr-1 btn-dark" onClick={ deleteHandle(props._id) }>Delete</button>
+                    <button type='button' className="btn mr-1 btn-dark" onClick={ () => deleteBook(props.id)  }>Delete</button>
                     <a href={props.link} target="_blank"><button type='button' className="btn mr-1 btn-dark">View</button></a>
                   </div>
                 </div>
