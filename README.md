@@ -15,7 +15,7 @@ This is a React based application which utilizes the Google Books API and MongoD
 
 ## Getting Started
 * [Github Repository](https://github.com/nathanmvu/react-book-search)
-* [Deployed Link](https://nathanmvu.github.io/react-book-search/)
+* [Deployed Link](https://desolate-inlet-50471.herokuapp.com/)
 * [Usage Demo Video](https://drive.google.com/file/d/1JAu-LMIW0I-uX_CaP7ygxB4uHDlosKgV/view)
 
 ![Demo](./img/demo.gif)
