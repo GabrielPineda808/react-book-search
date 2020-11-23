@@ -1,11 +1,10 @@
 import React from 'react';
 
-function Jumbo () {
+function Jumbotron () {
   return (
     <div className="container">
         <br></br>
         <div className="jumbotron">
-            
             <h1 className="display-4">(React) Google Book Search</h1>
             <h3 className="lead">Search for and save books of interest.</h3>
         </div>
@@ -13,4 +12,4 @@ function Jumbo () {
   )
 }
 
-export default Jumbo;
+export default Jumbotron;

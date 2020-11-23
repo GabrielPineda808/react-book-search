@@ -1,8 +1,8 @@
-import React, {Component, useState} from 'react';
+import React, { Component } from 'react';
 import API from '../utils/API'
 import Items from '../components/List/SearchItems'
 
-class Search extends React.Component {
+class Search extends Component {
     constructor(props) {
         super(props);
         this.state = {value: '',
@@ -19,25 +19,27 @@ class Search extends React.Component {
 
     handleSubmit(event){
         event.preventDefault()
-        API.getBooks(this.state.value).then(res => this.setState(state =>{
+        API.getBooks(this.state.value)
+        .then(res => this.setState(state =>{
             return {books: res.data.items}
         }))
     }
 
-    render() {return (
-        <div className="container">
-            <h3>Search a Book</h3>
-            <input type="text" value={this.state.value} onChange={this.handleChange} className="form-control" placeholder="Search..." aria-label="Recipient's username" aria-describedby="button-addon2"></input>
-            <button className="btn btn-outline-secondary mt-3 mb-3" onClick={this.handleSubmit} type="button" id="button-addon2">Search</button>
-            {this.state.books.map(book => 
-                <Items 
-                    title={book.volumeInfo.title} 
-                    author={book.volumeInfo.authors} 
-                    description={book.volumeInfo.description} 
-                    link={book.volumeInfo.infoLink} 
-                    image={book.volumeInfo.imageLinks.smallThumbnail} 
-                />  
-                )}           
+    render() {
+        return (
+            <div className="container">
+                <h3>Search a Book</h3>
+                <input type="text" value={this.state.value} onChange={this.handleChange} className="form-control" placeholder="Search..." aria-label="Recipient's username" aria-describedby="button-addon2"></input>
+                <button className="btn btn-outline-secondary mt-3 mb-3" onClick={this.handleSubmit} type="button" id="button-addon2">Search</button>
+                {this.state.books.map(book => 
+                    <Items 
+                        title={book.volumeInfo.title} 
+                        author={book.volumeInfo.authors} 
+                        description={book.volumeInfo.description} 
+                        link={book.volumeInfo.infoLink} 
+                        image={book.volumeInfo.imageLinks.smallThumbnail} 
+                    />  
+            )}           
         </div>
   )
     }

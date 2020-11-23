@@ -12,7 +12,7 @@ class Saved extends Component {
     link: ""
   };
 
-  componentsDidMoutn() {
+  componentsDidMount() {
     this.loadBooks()
   };
 
