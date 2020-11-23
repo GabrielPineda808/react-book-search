@@ -1,4 +1,4 @@
-import React, {Component, useState} from 'react';
+import React, { Component } from 'react';
 import API from '../utils/API'
 import Items from '../components/List/SavedItems'
 
@@ -12,41 +12,36 @@ class Saved extends Component {
     link: ""
   };
 
-  componentsDidMount() {
+  componentDidMount() {
     this.loadBooks()
+    console.log('books', this.state.books)
   };
 
   loadBooks() {
-    API.getBooks()
-    .then(res => {
-      this.setState({ 
-        books: res.data, 
-        title: res.data.title,
-        authors: res.data.author,
-        description: res.data.description,
-        image: res.data.image,
-        link: res.data.link
-      })
-    .catch(err => console.log(err))
+    API.getAllBooks()
+      .then(res => {
+        console.log(res.data);
+        this.setState({ 
+          books: res.data, 
+          title: res.data.title,
+          authors: res.data.author,
+          description: res.data.description,
+          image: res.data.image,
+          link: res.data.link
+        })
     })
-  }
-
-  delete = (id) => {
-    API.deleteBook(id)
-    .then(res => this.loadBooks())
-    .catch(err => console.log(err))
-  }
+  };
 
   render() {
     return (
-      <div>
+      <div class='container'>
         {this.state.books.map(book => 
           <Items 
-            title={book.volumeInfo.title} 
-            author={book.volumeInfo.authors} 
-            description={book.volumeInfo.description} 
-            link={book.volumeInfo.infoLink} 
-            image={book.volumeInfo.imageLinks.smallThumbnail} 
+            title={book.title} 
+            author={book.authors} 
+            description={book.description} 
+            link={book.link} 
+            image={book.image} 
         />  
         )}      
       </div>
